@@ -12,19 +12,22 @@ public class Q11399 {
 		StringTokenizer st;
 		
 		int N = Integer.parseInt(br.readLine());
-		int[] P = new int[N];
+		int[] P = new int[N+1];
+		int[] answer = new int[N+1];
 		int count = 0;
 		st = new StringTokenizer(br.readLine());
 		
-		for (int i = 0; i < N; i++) {
+		for (int i = 1; i <= N; i++) {
 			P[i] = Integer.parseInt(st.nextToken());
 		}
 		
 		Arrays.sort(P);
 		
-		for (int i = 0; i < N-1; i++) {
+		for (int i = 1; i <= N; i++) {
+			answer[i] = P[i] + answer[i-1];
+			count += answer[i];
 		}
-		
+
 		System.out.println(count);
 	}
 }
